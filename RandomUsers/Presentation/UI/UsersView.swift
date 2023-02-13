@@ -37,9 +37,3 @@ struct UsersView_Previews: PreviewProvider {
         UsersView(viewModel: UsersViewModel(usersRespository: FakeUsersRepository()))
     }
 }
-
-struct FakeUsersRepository: UsersRepository {
-    func fetchUsers() async throws -> [User] {
-        [User(email: "dummy@email.com")]
-    }
-}
