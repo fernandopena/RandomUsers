@@ -11,7 +11,15 @@ import SwiftUI
 struct RandomUsersApp: App {
     var body: some Scene {
         WindowGroup {
-            UsersView(viewModel: UsersViewModel(usersRespository: AuthenticatedUsersRespositoryDecorator(decoratee: APIClient())))
+            makeUsersView()
         }
+    }
+}
+
+extension RandomUsersApp {
+    func makeUsersView() -> UsersView {
+        let usersRepository = AuthenticatedUsersRespositoryDecorator(decoratee: APIClient())
+        let usersViewModel = UsersViewModel(usersRespository: usersRepository)
+        return UsersView(viewModel: usersViewModel)
     }
 }
