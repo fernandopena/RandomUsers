@@ -18,7 +18,7 @@ struct RandomUsersApp: App {
 
 extension RandomUsersApp {
     func makeUsersView() -> UsersView {
-        let usersRepository = AuthenticatedUsersRespositoryDecorator(decoratee: APIClient())
+        let usersRepository = AuthenticatedUsersRespositoryDecorator(decoratee: RandomUserAPIClient())
         let usersViewModel = UsersViewModel(usersRespository: usersRepository)
         return UsersView(viewModel: usersViewModel)
     }

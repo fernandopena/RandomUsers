@@ -7,7 +7,7 @@
 
 import Foundation
 
-class APIClient {
+class RandomUserAPIClient {
     let session: URLSession = .shared
     let apiEndpoint: String = "https://randomuser.me/api/"
     
