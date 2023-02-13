@@ -10,10 +10,10 @@ import LocalAuthentication
 
 class AuthenticatedUsersRespositoryDecorator: UsersRepository {
     let decoratee: UsersRepository
-    let biometryAuthenticator: BiometryAuthenticator
+    let biometryAuthenticator: BiometryAuthenticatorProtocol
 
     internal init(decoratee: UsersRepository,
-                  biometryAuthenticator: BiometryAuthenticator = BiometryAuthenticator()) {
+                  biometryAuthenticator: BiometryAuthenticatorProtocol = BiometryAuthenticator()) {
         self.decoratee = decoratee
         self.biometryAuthenticator = biometryAuthenticator
     }

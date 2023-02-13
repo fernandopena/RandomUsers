@@ -8,10 +8,21 @@
 import Foundation
 import LocalAuthentication
 
-final class BiometryAuthenticator {
-    let context: LAContext = LAContext()
+protocol BiometryAuthenticatorProtocol {
+    func authenticate() async throws -> Void
+}
+
+final class BiometryAuthenticator: BiometryAuthenticatorProtocol {
+    let context: LAContext
+    let localizedReason: String
     
-    func authenticate(localizedReason: String = "Biometry") async throws -> Void {
+    internal init(context: LAContext = LAContext(),
+                  localizedReason: String = "Biometry") {
+        self.context = context
+        self.localizedReason = localizedReason
+    }
+    
+    func authenticate() async throws -> Void {
         let result = try await context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizedReason)
         guard result else {
             throw Error.failedToAuthenticate
