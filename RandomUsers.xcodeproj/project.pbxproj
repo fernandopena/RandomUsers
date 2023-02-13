@@ -84,8 +84,7 @@
 		856DF589299570F00049F27F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				856DF58A299571020049F27F /* APIClient.swift */,
-				856DF58C2995711C0049F27F /* UserResultDTO.swift */,
+				8589BD4D299A8080000DBFA0 /* APIClient */,
 				856DF59A2995762D0049F27F /* APIClientAdapter.swift */,
 			);
 			path = Data;
@@ -115,6 +114,15 @@
 				856DF5982995757F0049F27F /* UsersRepository.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		8589BD4D299A8080000DBFA0 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				856DF58A299571020049F27F /* APIClient.swift */,
+				856DF58C2995711C0049F27F /* UserResultDTO.swift */,
+			);
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
