@@ -16,10 +16,10 @@
 		856DF594299574210049F27F /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF593299574210049F27F /* UsersViewModel.swift */; };
 		856DF597299574B50049F27F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF596299574B50049F27F /* User.swift */; };
 		856DF5992995757F0049F27F /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF5982995757F0049F27F /* UsersRepository.swift */; };
-		856DF59B2995762D0049F27F /* RandomUserAPIClientAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */; };
 		8589BD50299A83A7000DBFA0 /* FakeUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589BD4F299A83A7000DBFA0 /* FakeUsersRepository.swift */; };
 		8589BD54299A84EA000DBFA0 /* BiometryAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589BD53299A84EA000DBFA0 /* BiometryAuthenticator.swift */; };
-		8589BD56299AB18F000DBFA0 /* AuthenticatedUsersRespositoryDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589BD55299AB18F000DBFA0 /* AuthenticatedUsersRespositoryDecorator.swift */; };
+		8589BD5C299AD980000DBFA0 /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589BD5B299AD980000DBFA0 /* CombineHelpers.swift */; };
+		8589BD5E299ADF6A000DBFA0 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589BD5D299ADF6A000DBFA0 /* CompositionRoot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +33,10 @@
 		856DF593299574210049F27F /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		856DF596299574B50049F27F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		856DF5982995757F0049F27F /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
-		856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserAPIClientAdapter.swift; sourceTree = "<group>"; };
 		8589BD4F299A83A7000DBFA0 /* FakeUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUsersRepository.swift; sourceTree = "<group>"; };
 		8589BD53299A84EA000DBFA0 /* BiometryAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryAuthenticator.swift; sourceTree = "<group>"; };
-		8589BD55299AB18F000DBFA0 /* AuthenticatedUsersRespositoryDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedUsersRespositoryDecorator.swift; sourceTree = "<group>"; };
+		8589BD5B299AD980000DBFA0 /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
+		8589BD5D299ADF6A000DBFA0 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +74,7 @@
 				856DF58E299573DF0049F27F /* Presentation */,
 				856DF589299570F00049F27F /* Data */,
 				856DF57B299570970049F27F /* RandomUsersApp.swift */,
+				8589BD5D299ADF6A000DBFA0 /* CompositionRoot.swift */,
 				856DF57F299570970049F27F /* Assets.xcassets */,
 				856DF581299570970049F27F /* Preview Content */,
 			);
@@ -92,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				8589BD4D299A8080000DBFA0 /* RandomUserAPIClient */,
-				856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -135,6 +135,7 @@
 		8589BD4E299A839B000DBFA0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8589BD5A299AD978000DBFA0 /* Combine */,
 				8589BD52299A84DE000DBFA0 /* Biometry */,
 				8589BD51299A83B3000DBFA0 /* Preview */,
 			);
@@ -153,9 +154,16 @@
 			isa = PBXGroup;
 			children = (
 				8589BD53299A84EA000DBFA0 /* BiometryAuthenticator.swift */,
-				8589BD55299AB18F000DBFA0 /* AuthenticatedUsersRespositoryDecorator.swift */,
 			);
 			path = Biometry;
+			sourceTree = "<group>";
+		};
+		8589BD5A299AD978000DBFA0 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				8589BD5B299AD980000DBFA0 /* CombineHelpers.swift */,
+			);
+			path = Combine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,14 +239,14 @@
 				856DF591299573ED0049F27F /* UsersView.swift in Sources */,
 				856DF594299574210049F27F /* UsersViewModel.swift in Sources */,
 				8589BD54299A84EA000DBFA0 /* BiometryAuthenticator.swift in Sources */,
-				856DF59B2995762D0049F27F /* RandomUserAPIClientAdapter.swift in Sources */,
 				856DF5992995757F0049F27F /* UsersRepository.swift in Sources */,
-				8589BD56299AB18F000DBFA0 /* AuthenticatedUsersRespositoryDecorator.swift in Sources */,
 				856DF57C299570970049F27F /* RandomUsersApp.swift in Sources */,
 				8589BD50299A83A7000DBFA0 /* FakeUsersRepository.swift in Sources */,
 				856DF58B299571020049F27F /* RandomUserAPIClient.swift in Sources */,
 				856DF58D2995711C0049F27F /* UserResultDTO.swift in Sources */,
 				856DF597299574B50049F27F /* User.swift in Sources */,
+				8589BD5E299ADF6A000DBFA0 /* CompositionRoot.swift in Sources */,
+				8589BD5C299AD980000DBFA0 /* CombineHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

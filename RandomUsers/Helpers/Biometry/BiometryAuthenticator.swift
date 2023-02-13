@@ -25,11 +25,11 @@ final class BiometryAuthenticator: BiometryAuthenticatorProtocol {
     func authenticate() async throws -> Void {
         let result = try await context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizedReason)
         guard result else {
-            throw Error.failedToAuthenticate
+            throw AuthenticationError.failedToAuthenticate
         }
     }
-    
-    enum Error: Swift.Error {
-        case failedToAuthenticate
-    }
+}
+
+enum AuthenticationError: Error {
+    case failedToAuthenticate
 }
