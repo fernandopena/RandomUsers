@@ -8,8 +8,17 @@
 import Foundation
 import LocalAuthentication
 
-struct BiometryAuthenticator {
-    private func asyncAuthentication(localizedReason: String = "Biometry") async throws -> Bool {
-        try await LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizedReason)
+final class BiometryAuthenticator {
+    let context: LAContext = LAContext()
+    
+    func authenticate(localizedReason: String = "Biometry") async throws -> Void {
+        let result = try await context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizedReason)
+        guard result else {
+            throw Error.failedToAuthenticate
+        }
+    }
+    
+    enum Error: Swift.Error {
+        case failedToAuthenticate
     }
 }

@@ -10,27 +10,16 @@ import LocalAuthentication
 
 class AuthenticatedUsersRespositoryDecorator: UsersRepository {
     let decoratee: UsersRepository
-    let context: LAContext
-    let localizedReason: String
+    let biometryAuthenticator: BiometryAuthenticator
 
     internal init(decoratee: UsersRepository,
-                  context: LAContext = LAContext(),
-                  localizedReason: String = "Biometry") {
+                  biometryAuthenticator: BiometryAuthenticator = BiometryAuthenticator()) {
         self.decoratee = decoratee
-        self.context = context
-        self.localizedReason = localizedReason
+        self.biometryAuthenticator = biometryAuthenticator
     }
     
     func fetchUsers() async throws -> [User] {
-        let result = try await context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                                                      localizedReason: localizedReason)
-        guard result else {
-            throw BiometyError.failedToAuthenticate
-        }
+        try await biometryAuthenticator.authenticate()
         return try await decoratee.fetchUsers()
     }
-}
-
-enum BiometyError: Error {
-    case failedToAuthenticate
 }
