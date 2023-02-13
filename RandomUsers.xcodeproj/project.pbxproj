@@ -8,17 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		856DF57C299570970049F27F /* RandomUsersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF57B299570970049F27F /* RandomUsersApp.swift */; };
-		856DF57E299570970049F27F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF57D299570970049F27F /* ContentView.swift */; };
 		856DF580299570970049F27F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856DF57F299570970049F27F /* Assets.xcassets */; };
 		856DF583299570970049F27F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856DF582299570970049F27F /* Preview Assets.xcassets */; };
+		856DF58B299571020049F27F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF58A299571020049F27F /* APIClient.swift */; };
+		856DF58D2995711C0049F27F /* UserResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF58C2995711C0049F27F /* UserResultDTO.swift */; };
+		856DF591299573ED0049F27F /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF590299573ED0049F27F /* UsersView.swift */; };
+		856DF594299574210049F27F /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF593299574210049F27F /* UsersViewModel.swift */; };
+		856DF597299574B50049F27F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF596299574B50049F27F /* User.swift */; };
+		856DF5992995757F0049F27F /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF5982995757F0049F27F /* UsersRepository.swift */; };
+		856DF59B2995762D0049F27F /* APIClientAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF59A2995762D0049F27F /* APIClientAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		856DF578299570970049F27F /* RandomUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		856DF57B299570970049F27F /* RandomUsersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersApp.swift; sourceTree = "<group>"; };
-		856DF57D299570970049F27F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		856DF57F299570970049F27F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		856DF582299570970049F27F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		856DF58A299571020049F27F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		856DF58C2995711C0049F27F /* UserResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResultDTO.swift; sourceTree = "<group>"; };
+		856DF590299573ED0049F27F /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		856DF593299574210049F27F /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		856DF596299574B50049F27F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		856DF5982995757F0049F27F /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
+		856DF59A2995762D0049F27F /* APIClientAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +63,10 @@
 		856DF57A299570970049F27F /* RandomUsers */ = {
 			isa = PBXGroup;
 			children = (
+				856DF5952995743D0049F27F /* Domain */,
+				856DF58E299573DF0049F27F /* Presentation */,
+				856DF589299570F00049F27F /* Data */,
 				856DF57B299570970049F27F /* RandomUsersApp.swift */,
-				856DF57D299570970049F27F /* ContentView.swift */,
 				856DF57F299570970049F27F /* Assets.xcassets */,
 				856DF581299570970049F27F /* Preview Content */,
 			);
@@ -65,6 +79,42 @@
 				856DF582299570970049F27F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		856DF589299570F00049F27F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				856DF58A299571020049F27F /* APIClient.swift */,
+				856DF58C2995711C0049F27F /* UserResultDTO.swift */,
+				856DF59A2995762D0049F27F /* APIClientAdapter.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		856DF58E299573DF0049F27F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				856DF58F299573E70049F27F /* UI */,
+				856DF593299574210049F27F /* UsersViewModel.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		856DF58F299573E70049F27F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				856DF590299573ED0049F27F /* UsersView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		856DF5952995743D0049F27F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				856DF596299574B50049F27F /* User.swift */,
+				856DF5982995757F0049F27F /* UsersRepository.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				856DF57E299570970049F27F /* ContentView.swift in Sources */,
+				856DF591299573ED0049F27F /* UsersView.swift in Sources */,
+				856DF594299574210049F27F /* UsersViewModel.swift in Sources */,
+				856DF59B2995762D0049F27F /* APIClientAdapter.swift in Sources */,
+				856DF5992995757F0049F27F /* UsersRepository.swift in Sources */,
 				856DF57C299570970049F27F /* RandomUsersApp.swift in Sources */,
+				856DF58B299571020049F27F /* APIClient.swift in Sources */,
+				856DF58D2995711C0049F27F /* UserResultDTO.swift in Sources */,
+				856DF597299574B50049F27F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
