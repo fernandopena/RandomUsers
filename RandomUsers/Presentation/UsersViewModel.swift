@@ -25,11 +25,10 @@ class UsersViewModel: ObservableObject {
             switch result {
             case .success(let users):
                 self.users = users
-            case .failure(let error):
+            case .failure:
                 // Handle error
-                print("ERROR: \(error)")
+                break
             }
         }
-        
     }
 }
