@@ -32,8 +32,17 @@ struct UsersView: View {
     }
 }
 
+// MARK: - Preview
 struct UsersView_Previews: PreviewProvider {
     static var previews: some View {
         UsersView(viewModel: UsersViewModel(usersRespository: FakeUsersRepository()))
+    }
+}
+
+struct FakeUsersRepository: UsersRepository {
+    func fetchUsers(completion: @escaping Completion) {
+        completion(.success(
+            [User(email: "dummy@email.com"),
+             User(email: "another-dummy@email.com")]))
     }
 }

@@ -12,12 +12,10 @@ class RandomUserAPIClient {
     let apiEndpoint: String = "https://randomuser.me/api/"
     
     func fetchRandomUsers(results: Int = 10) async throws -> [UserDTO] {
-        let url = URL(string: "https://randomuser.me/api/?results=\(results)")!
+        let url = URL(string: "\(apiEndpoint)/?results=\(results)")!
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
         let response = try decoder.decode(UsersResponseDTO.self, from: data)
         return response.results
     }
 }
-
-

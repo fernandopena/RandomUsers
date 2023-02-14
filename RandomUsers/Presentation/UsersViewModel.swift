@@ -20,18 +20,16 @@ class UsersViewModel: ObservableObject {
     
     func fetchUsers() {
         isLoading = true
-        Task {
-            do {
-                let users = try await usersRespository.fetchUsers()
-                await MainActor.run {
-                    self.users = users
-                }
-            } catch {
+        usersRespository.fetchUsers { result in
+            self.isLoading = false
+            switch result {
+            case .success(let users):
+                self.users = users
+            case .failure(let error):
                 // Handle error
-            }
-            await MainActor.run {
-                self.isLoading = false
+                print("ERROR: \(error)")
             }
         }
+        
     }
 }
