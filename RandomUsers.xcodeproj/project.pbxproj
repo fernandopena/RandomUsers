@@ -17,7 +17,6 @@
 		856DF597299574B50049F27F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF596299574B50049F27F /* User.swift */; };
 		856DF5992995757F0049F27F /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF5982995757F0049F27F /* UsersRepository.swift */; };
 		856DF59B2995762D0049F27F /* RandomUserAPIClientAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */; };
-		8589BD50299A83A7000DBFA0 /* FakeUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589BD4F299A83A7000DBFA0 /* FakeUsersRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +31,6 @@
 		856DF596299574B50049F27F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		856DF5982995757F0049F27F /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
 		856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserAPIClientAdapter.swift; sourceTree = "<group>"; };
-		8589BD4F299A83A7000DBFA0 /* FakeUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUsersRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				858C4E54299C1C6100C1FC14 /* Protocols */,
-				8589BD4E299A839B000DBFA0 /* Helpers */,
 				856DF58F299573E70049F27F /* UI */,
 				856DF593299574210049F27F /* UsersViewModel.swift */,
 			);
@@ -126,22 +123,6 @@
 				856DF58C2995711C0049F27F /* UserResultDTO.swift */,
 			);
 			path = RandomUserAPIClient;
-			sourceTree = "<group>";
-		};
-		8589BD4E299A839B000DBFA0 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				8589BD51299A83B3000DBFA0 /* Preview */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		8589BD51299A83B3000DBFA0 /* Preview */ = {
-			isa = PBXGroup;
-			children = (
-				8589BD4F299A83A7000DBFA0 /* FakeUsersRepository.swift */,
-			);
-			path = Preview;
 			sourceTree = "<group>";
 		};
 		858C4E54299C1C6100C1FC14 /* Protocols */ = {
@@ -235,7 +216,6 @@
 				856DF59B2995762D0049F27F /* RandomUserAPIClientAdapter.swift in Sources */,
 				856DF5992995757F0049F27F /* UsersRepository.swift in Sources */,
 				856DF57C299570970049F27F /* RandomUsersApp.swift in Sources */,
-				8589BD50299A83A7000DBFA0 /* FakeUsersRepository.swift in Sources */,
 				856DF58B299571020049F27F /* RandomUserAPIClient.swift in Sources */,
 				856DF58D2995711C0049F27F /* UserResultDTO.swift in Sources */,
 				856DF597299574B50049F27F /* User.swift in Sources */,
