@@ -20,17 +20,15 @@ class UsersViewModel: ObservableObject {
     
     func fetchUsers() {
         isLoading = true
-        Task {
-            do {
-                let users = try await usersRespository.fetchUsers()
-                await MainActor.run {
-                    self.users = users
-                }
-            } catch {
-                // Handle error
-            }
-            await MainActor.run {
+        usersRespository.fetchUsers { result in
+            DispatchQueue.main.async {
                 self.isLoading = false
+                switch result {
+                case .success(let users):
+                    self.users = users
+                case .failure:
+                    break
+                }
             }
         }
     }

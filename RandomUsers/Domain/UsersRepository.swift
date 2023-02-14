@@ -8,5 +8,6 @@
 import Foundation
 
 protocol UsersRepository {
-    func fetchUsers() async throws -> [User]
+    typealias Completion = (Result<[User], Error>) -> Void
+    func fetchUsers(completion: @escaping Completion)
 }

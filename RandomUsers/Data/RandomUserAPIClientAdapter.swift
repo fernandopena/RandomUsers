@@ -8,8 +8,16 @@
 import Foundation
 
 extension RandomUserAPIClient: UsersRepository {
-    func fetchUsers() async throws -> [User] {
-        return try await fetchRandomUsers().map(User.init(dto:))
+    func fetchUsers(completion: @escaping Completion) {
+        Task {
+            do {
+                let usersDto = try await fetchRandomUsers()
+                let users = usersDto.map(User.init(dto:))
+                completion(.success(users))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
 }
 

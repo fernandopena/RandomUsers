@@ -8,7 +8,7 @@
 import Foundation
 
 struct FakeUsersRepository: UsersRepository {
-    func fetchUsers() async throws -> [User] {
-        [User(email: "dummy@email.com")]
+    func fetchUsers(completion: @escaping Completion) {
+        completion(.success([User(email: "dummy@email.com")]))
     }
 }
