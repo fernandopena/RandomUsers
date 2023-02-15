@@ -22,7 +22,7 @@ extension LoggerDecorator: UsersRepository where T == UsersRepository {
     func fetchUsers(completion: @escaping Completion) {
         decoratee.fetchUsers { [weak self] result in
             switch result {
-            case .success(let users): self?.logger.log("SUCCESS: \(users)")
+            case .success: break
             case .failure(let error): self?.logger.log("ERROR: \(error)")
             }
             completion(result)
