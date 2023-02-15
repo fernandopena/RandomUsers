@@ -11,7 +11,21 @@ import SwiftUI
 struct RandomUsersApp: App {
     var body: some Scene {
         WindowGroup {
-            UsersView(viewModel: UsersViewModel(usersRespository: LoggerDecorator(decoratee: BiometryDecorator(decoratee: MainQueueDispatchDecorator(decoratee: RandomUserAPIClient())))))
+            makeUsersView()
         }
     }
+}
+
+extension RandomUsersApp {
+    func makeUsersView() -> UsersView {
+        let usersRepository: UsersRepository = LoggerDecorator(decoratee: BiometryDecorator(decoratee: MainQueueDispatchDecorator(decoratee: RandomUserAPIClient())))
+        let viewModel = UsersViewModel(usersRespository: usersRepository)
+        return UsersView(viewModel: viewModel)
+    }
+}
+
+func makeUsersView() -> UsersView {
+    let usersRepository: UsersRepository = LoggerDecorator(decoratee: BiometryDecorator(decoratee: MainQueueDispatchDecorator(decoratee: RandomUserAPIClient())))
+    let viewModel = UsersViewModel(usersRespository: usersRepository)
+    return UsersView(viewModel: viewModel)
 }
