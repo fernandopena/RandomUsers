@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 class UsersViewModel: ObservableObject {
     @Published var users: [User] = []
