@@ -23,9 +23,3 @@ extension RandomUsersApp {
         return UsersView(viewModel: viewModel)
     }
 }
-
-func makeUsersView() -> UsersView {
-    let usersRepository: UsersRepository = LoggerDecorator(decoratee: BiometryDecorator(decoratee: MainQueueDispatchDecorator(decoratee: RandomUserAPIClient())))
-    let viewModel = UsersViewModel(usersRespository: usersRepository)
-    return UsersView(viewModel: viewModel)
-}
