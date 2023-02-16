@@ -19,8 +19,15 @@ struct RandomUsersApp: App {
 
 extension RandomUsersApp {
     func makeUsersView() -> UsersView {
-        let viewModel = UsersViewModel(usersPublisher: RandomUserAPIClient().fetchPublisher)
+        let viewModel = UsersViewModel(usersPublisher: makeUsersPublisher)
         return UsersView(viewModel: viewModel)
+    }
+
+    func makeUsersPublisher() -> AnyPublisher<[User], Error> {
+        RandomUserAPIClient()
+            .fetchPublisher()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
 
