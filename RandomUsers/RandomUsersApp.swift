@@ -24,8 +24,9 @@ extension RandomUsersApp {
     }
 
     func makeUsersPublisher() -> AnyPublisher<[User], Error> {
-        RandomUserAPIClient()
-            .fetchPublisher()
+        LABiometryAuthenticator()
+            .authenticatePublisher()
+            .flatMap { RandomUserAPIClient().fetchPublisher() }
             .logErrors(to: LocalLogger())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
@@ -40,12 +41,14 @@ extension UsersRepository {
     }
 }
 
-func makeUsersPublisher() -> AnyPublisher<[User], Error> {
-    RandomUserAPIClient()
-        .fetchPublisher()
-        .logErrors(to: LocalLogger())
-        .receive(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
+extension AuthenticatorProtocol {
+    func authenticatePublisher() -> AnyPublisher<Void, Error> {
+        Deferred {
+            Future {
+                try await self.authenticate()
+            }
+        }.eraseToAnyPublisher()
+    }
 }
 
 // Operator that logs errors on a `LoggerProtocol` instance
@@ -57,5 +60,4 @@ extension Publisher {
         }.eraseToAnyPublisher()
     }
 }
-
 
