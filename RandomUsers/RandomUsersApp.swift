@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 @main
 struct RandomUsersApp: App {
@@ -18,8 +19,16 @@ struct RandomUsersApp: App {
 
 extension RandomUsersApp {
     func makeUsersView() -> UsersView {
-        let usersRepository: UsersRepository = LoggerDecorator(decoratee: BiometryDecorator(decoratee: MainQueueDispatchDecorator(decoratee: RandomUserAPIClient())))
-        let viewModel = UsersViewModel(usersRespository: usersRepository)
+        let viewModel = UsersViewModel(usersPublisher: RandomUserAPIClient().fetchPublisher)
         return UsersView(viewModel: viewModel)
     }
 }
+
+extension UsersRepository {
+    func fetchPublisher() -> AnyPublisher<[User], Error> {
+        Deferred {
+            Future(self.fetchUsers)
+        }.eraseToAnyPublisher()
+    }
+}
+

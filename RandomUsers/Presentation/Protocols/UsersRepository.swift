@@ -11,3 +11,4 @@ protocol UsersRepository {
     typealias Completion = (Result<[User], Error>) -> Void
     func fetchUsers(completion: @escaping Completion)
 }
+

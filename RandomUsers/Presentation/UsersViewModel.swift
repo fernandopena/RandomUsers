@@ -12,23 +12,20 @@ class UsersViewModel: ObservableObject {
     @Published var users: [User] = []
     @Published var isLoading: Bool = false
     
-    private let usersRespository: UsersRepository
+    private var cancellable: AnyCancellable?
+    private let usersPublisher: () -> AnyPublisher<[User], Error>
     
-    init(usersRespository: UsersRepository) {
-        self.usersRespository = usersRespository
+    init(usersPublisher: @escaping () -> AnyPublisher<[User], Error>) {
+        self.usersPublisher = usersPublisher
     }
     
     func fetchUsers() {
         isLoading = true
-        usersRespository.fetchUsers { result in
-            self.isLoading = false
-            switch result {
-            case .success(let users):
-                self.users = users
-            case .failure:
-                // Handle error
-                break
-            }
-        }
+        cancellable = usersPublisher()
+            .sink(receiveCompletion: { [weak self] _ in
+            self?.isLoading = false
+        }, receiveValue: { [weak self] users in
+            self?.users = users
+        })
     }
 }
