@@ -21,7 +21,7 @@ extension RandomUsersApp {
     func makeUsersView() -> UsersView {
         let usersPublisher = makeUsersPublisher
         let usersRespository = UsersRepositoryAdapter(usersPublisher: usersPublisher)
-        let viewModel = UsersViewModel(usersRespository: usersRespository)
+        let viewModel = UsersViewModel(fetchUsersClosure: usersRespository.fetchUsers)
         return UsersView(viewModel: viewModel)
     }
 
@@ -74,7 +74,7 @@ extension Publisher {
 }
 
 // Convert from Combine Publuisher to `UsersRepository` required by the ViewModel.
-class UsersRepositoryAdapter: UsersRepository {
+class UsersRepositoryAdapter {
     private let usersPublisher: () -> AnyPublisher<[User], Error>
     private var cancellable: AnyCancellable?
 
@@ -82,7 +82,7 @@ class UsersRepositoryAdapter: UsersRepository {
         self.usersPublisher = usersPublisher
     }
     
-    func fetchUsers(completion completionHandler: @escaping Completion) {
+    func fetchUsers(completion completionHandler: @escaping FetchUsersCompletion) {
         cancellable = usersPublisher().sink(receiveCompletion: { completion in
             switch completion {
             case .failure(let error):

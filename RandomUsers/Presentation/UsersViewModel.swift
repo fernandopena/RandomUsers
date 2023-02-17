@@ -7,19 +7,21 @@
 
 import Foundation
 
+typealias FetchUsersCompletion = (Result<[User], Error>) -> Void
+
 class UsersViewModel: ObservableObject {
     @Published var users: [User] = []
     @Published var isLoading: Bool = false
+
+    let fetchUsersClosure: (@escaping FetchUsersCompletion) -> Void
     
-    private let usersRespository: UsersRepository
-    
-    init(usersRespository: UsersRepository) {
-        self.usersRespository = usersRespository
+    init(fetchUsersClosure:  @escaping (@escaping FetchUsersCompletion) -> Void) {
+        self.fetchUsersClosure = fetchUsersClosure
     }
     
     func fetchUsers() {
         isLoading = true
-        usersRespository.fetchUsers { result in
+        fetchUsersClosure { result in
             self.isLoading = false
             switch result {
             case .success(let users):
@@ -29,5 +31,15 @@ class UsersViewModel: ObservableObject {
                 break
             }
         }
+//        usersRespository() { result in
+//            self.isLoading = false
+//            switch result {
+//            case .success(let users):
+//                self.users = users
+//            case .failure:
+//                // Handle error
+//                break
+//            }
+//        }
     }
 }
