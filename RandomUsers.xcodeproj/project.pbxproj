@@ -16,7 +16,6 @@
 		856DF594299574210049F27F /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF593299574210049F27F /* UsersViewModel.swift */; };
 		856DF597299574B50049F27F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF596299574B50049F27F /* User.swift */; };
 		856DF5992995757F0049F27F /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF5982995757F0049F27F /* UsersRepository.swift */; };
-		856DF59B2995762D0049F27F /* RandomUserAPIClientAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */; };
 		858C4E46299BD3F800C1FC14 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858C4E45299BD3F800C1FC14 /* LocalLogger.swift */; };
 		858C4E49299BD43100C1FC14 /* LoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858C4E48299BD43100C1FC14 /* LoggerProtocol.swift */; };
 		858C4E4B299BD50E00C1FC14 /* AuthenticatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858C4E4A299BD50E00C1FC14 /* AuthenticatorProtocol.swift */; };
@@ -35,7 +34,6 @@
 		856DF593299574210049F27F /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		856DF596299574B50049F27F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		856DF5982995757F0049F27F /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
-		856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserAPIClientAdapter.swift; sourceTree = "<group>"; };
 		858C4E45299BD3F800C1FC14 /* LocalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLogger.swift; sourceTree = "<group>"; };
 		858C4E48299BD43100C1FC14 /* LoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerProtocol.swift; sourceTree = "<group>"; };
 		858C4E4A299BD50E00C1FC14 /* AuthenticatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorProtocol.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 			children = (
 				85DA04AB299EBE200045E177 /* Helpers */,
 				858C4E4F299BD5A400C1FC14 /* Protocols */,
-				856DF59A2995762D0049F27F /* RandomUserAPIClientAdapter.swift */,
 			);
 			path = CompositionRoot;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 			files = (
 				856DF591299573ED0049F27F /* UsersView.swift in Sources */,
 				856DF594299574210049F27F /* UsersViewModel.swift in Sources */,
-				856DF59B2995762D0049F27F /* RandomUserAPIClientAdapter.swift in Sources */,
 				856DF5992995757F0049F27F /* UsersRepository.swift in Sources */,
 				858C4E4B299BD50E00C1FC14 /* AuthenticatorProtocol.swift in Sources */,
 				856DF57C299570970049F27F /* RandomUsersApp.swift in Sources */,

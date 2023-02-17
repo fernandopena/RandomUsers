@@ -35,14 +35,24 @@ extension RandomUsersApp {
     }
 }
 
-extension UsersRepository {
+// RandomUserAPIClient Adapter
+extension RandomUserAPIClient {
     func fetchPublisher() -> AnyPublisher<[User], Error> {
         Deferred {
-            Future(self.fetchUsers)
+            Future {
+                try await self.fetchRandomUsers()
+            }.map{ $0.map(User.init(dto:)) }
         }.eraseToAnyPublisher()
     }
 }
 
+extension User {
+    init(dto: UserDTO) {
+        email = dto.email
+    }
+}
+
+// Bridge `AuthenticatorProtocol` from async/await to Combine world.
 extension AuthenticatorProtocol {
     func authenticatePublisher() -> AnyPublisher<Void, Error> {
         Deferred {
@@ -63,6 +73,7 @@ extension Publisher {
     }
 }
 
+// Convert from Combine Publuisher to `UsersRepository` required by the ViewModel.
 class UsersRepositoryAdapter: UsersRepository {
     private let usersPublisher: () -> AnyPublisher<[User], Error>
     private var cancellable: AnyCancellable?
