@@ -31,15 +31,5 @@ class UsersViewModel: ObservableObject {
                 break
             }
         }
-//        usersRespository() { result in
-//            self.isLoading = false
-//            switch result {
-//            case .success(let users):
-//                self.users = users
-//            case .failure:
-//                // Handle error
-//                break
-//            }
-//        }
     }
 }

@@ -20,7 +20,7 @@ struct RandomUsersApp: App {
 extension RandomUsersApp {
     func makeUsersView() -> UsersView {
         let usersPublisher = makeUsersPublisher
-        let usersRespository = UsersRepositoryAdapter(usersPublisher: usersPublisher)
+        let usersRespository = UsersFetcherAdapter(usersPublisher: usersPublisher)
         let viewModel = UsersViewModel(fetchUsersClosure: usersRespository.fetchUsers)
         return UsersView(viewModel: viewModel)
     }
@@ -73,8 +73,8 @@ extension Publisher {
     }
 }
 
-// Convert from Combine Publuisher to `UsersRepository` required by the ViewModel.
-class UsersRepositoryAdapter {
+// Convert from Combine Publisher to `fetchUsersClosure` required by the ViewModel.
+class UsersFetcherAdapter {
     private let usersPublisher: () -> AnyPublisher<[User], Error>
     private var cancellable: AnyCancellable?
 
