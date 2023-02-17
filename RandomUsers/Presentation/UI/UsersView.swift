@@ -35,7 +35,7 @@ struct UsersView: View {
 // MARK: - Preview
 struct UsersView_Previews: PreviewProvider {
     static var previews: some View {
-        UsersView(viewModel: UsersViewModel(usersPublisher: FakeUsersRepository().fetchPublisher))
+        UsersView(viewModel: UsersViewModel(usersRespository: FakeUsersRepository()))
     }
 }
 

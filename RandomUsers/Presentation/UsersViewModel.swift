@@ -6,26 +6,28 @@
 //
 
 import Foundation
-import Combine
 
 class UsersViewModel: ObservableObject {
     @Published var users: [User] = []
     @Published var isLoading: Bool = false
     
-    private var cancellable: AnyCancellable?
-    private let usersPublisher: () -> AnyPublisher<[User], Error>
+    private let usersRespository: UsersRepository
     
-    init(usersPublisher: @escaping () -> AnyPublisher<[User], Error>) {
-        self.usersPublisher = usersPublisher
+    init(usersRespository: UsersRepository) {
+        self.usersRespository = usersRespository
     }
     
     func fetchUsers() {
         isLoading = true
-        cancellable = usersPublisher()
-            .sink(receiveCompletion: { [weak self] _ in
-            self?.isLoading = false
-        }, receiveValue: { [weak self] users in
-            self?.users = users
-        })
+        usersRespository.fetchUsers { result in
+            self.isLoading = false
+            switch result {
+            case .success(let users):
+                self.users = users
+            case .failure:
+                // Handle error
+                break
+            }
+        }
     }
 }

@@ -19,7 +19,9 @@ struct RandomUsersApp: App {
 
 extension RandomUsersApp {
     func makeUsersView() -> UsersView {
-        let viewModel = UsersViewModel(usersPublisher: makeUsersPublisher)
+        let usersPublisher = makeUsersPublisher
+        let usersRespository = UsersRepositoryAdapter(usersPublisher: usersPublisher)
+        let viewModel = UsersViewModel(usersRespository: usersRespository)
         return UsersView(viewModel: viewModel)
     }
 
@@ -61,3 +63,24 @@ extension Publisher {
     }
 }
 
+class UsersRepositoryAdapter: UsersRepository {
+    private let usersPublisher: () -> AnyPublisher<[User], Error>
+    private var cancellable: AnyCancellable?
+
+    init(usersPublisher: @escaping () -> AnyPublisher<[User], Error>) {
+        self.usersPublisher = usersPublisher
+    }
+    
+    func fetchUsers(completion completionHandler: @escaping Completion) {
+        cancellable = usersPublisher().sink(receiveCompletion: { completion in
+            switch completion {
+            case .failure(let error):
+                completionHandler(.failure(error))
+            case .finished:
+                break
+            }
+        }, receiveValue: { value in
+            completionHandler(.success(value))
+        })
+    }
+}
